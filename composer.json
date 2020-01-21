@@ -1,0 +1,11 @@
+{
+    "name": "heapsort/heapsort",
+    "description": "Heapsort In PHP",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Heapsort\\Heapsort\\": "src/"
+        }
+    }
+}
