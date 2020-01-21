@@ -19,7 +19,6 @@ class Heap
         $root = $this->heapArray[0];
         // put last element into root
         $this->heapArray[0] = $this->heapArray[--$this->_currentSize];
-        $this->bubbleDown(0); 
         return $root; 
     }
 
@@ -50,6 +49,38 @@ class Heap
             // shift child up
             $this->heapArray[$index] = $this->heapArray[$largerChild]; 
             $index = $largerChild; // go down
+        }
+
+        $this->heapArray[$index] = $top; // root to index
+    }
+
+    // Shift process
+    public function bubbleUp($index)
+    {
+        $smallerChild = null;
+        $top = $this->heapArray[$index]; // save root
+        while ($index < (int)($this->_currentSize/2)) { // not on bottom row
+            $leftChild = 2 * $index + 1;
+            $rightChild = $leftChild + 1;
+
+            // find smaller child
+            if (
+                $rightChild < $this->_currentSize &&
+                $this->heapArray[$leftChild] > $this->heapArray[$rightChild]
+            ) // right child exists?
+            {
+                $smallerChild = $rightChild;
+            } else {
+                $smallerChild = $leftChild;
+            }
+
+            if ($top->getKey() <= $this->heapArray[$smallerChild]->getKey()) {
+                break;
+            }
+
+            // shift child up
+            $this->heapArray[$index] = $this->heapArray[$smallerChild]; 
+            $index = $smallerChild; // go down
         }
 
         $this->heapArray[$index] = $top; // root to index
