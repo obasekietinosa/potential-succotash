@@ -26,7 +26,11 @@ class Heap
     // Shift process
     public function bubbleDown($index)
     {
+<<<<<<< HEAD
         $largerChild = null;
+=======
+        $larger_Child = null;
+>>>>>>> b5c7fe5d2e81fcdeec45f9df8274b4d4b9243672
         $top = $this->heapArray[$index]; // save root
         while ($index < (int)($this->_currentSize/2)) { // not on bottom row
             $leftChild = 2 * $index + 1;
@@ -43,13 +47,22 @@ class Heap
                 $largerChild = $leftChild;
             }
 
+<<<<<<< HEAD
             if ($top->getKey() >= $this->heapArray[$largerChild]->getKey()) {
+=======
+            if ($top->getKey() >= $this->heapArray[$larger_Child]->getKey()) {
+>>>>>>> b5c7fe5d2e81fcdeec45f9df8274b4d4b9243672
                 break;
             }
 
             // shift child up
+<<<<<<< HEAD
             $this->heapArray[$index] = $this->heapArray[$largerChild]; 
             $index = $largerChild; // go down
+=======
+            $this->heapArray[$index] = $this->heapArray[$larger_Child]; 
+            $index = $larger_Child; // go down
+>>>>>>> b5c7fe5d2e81fcdeec45f9df8274b4d4b9243672
         }
 
         $this->heapArray[$index] = $top; // root to index
